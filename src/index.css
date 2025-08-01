@@ -2,39 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Magic Mirror Design System - Dark, mystical, and enchanting */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Dark magical theme */
+    --background: 240 10% 8%;
+    --foreground: 240 10% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 240 10% 12%;
+    --card-foreground: 240 10% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 240 10% 12%;
+    --popover-foreground: 240 10% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Magical purple-blue primary */
+    --primary: 280 100% 70%;
+    --primary-foreground: 240 10% 95%;
+    --primary-glow: 280 100% 85%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Silver/mirror secondary */
+    --secondary: 220 20% 20%;
+    --secondary-foreground: 220 20% 90%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 240 10% 15%;
+    --muted-foreground: 240 5% 60%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Golden accent for Sreemrudu */
+    --accent: 45 100% 70%;
+    --accent-foreground: 240 10% 8%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Danger red for troll mode */
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 240 10% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 240 10% 20%;
+    --input: 240 10% 15%;
+    --ring: 280 100% 70%;
+
+    /* Magic Mirror specific colors */
+    --mirror-frame: 220 30% 25%;
+    --mirror-glass: 200 50% 90%;
+    --magic-sparkle: 280 100% 85%;
+    --rose-petal: 350 100% 70%;
+    --troll-red: 0 100% 50%;
+    --mass-meter-low: 0 100% 40%;
+    
+    /* Gradients */
+    --gradient-magic: linear-gradient(135deg, hsl(280 100% 70%), hsl(260 100% 60%), hsl(240 100% 70%));
+    --gradient-mirror: linear-gradient(135deg, hsl(220 30% 25%), hsl(200 40% 35%), hsl(220 30% 25%));
+    --gradient-sreemrudu: linear-gradient(135deg, hsl(45 100% 70%), hsl(280 100% 70%), hsl(320 100% 70%));
+    --gradient-troll: linear-gradient(135deg, hsl(0 100% 50%), hsl(20 100% 40%));
+    
+    /* Shadows and effects */
+    --shadow-magical: 0 0 30px hsl(280 100% 70% / 0.5);
+    --shadow-mirror: inset 0 0 50px hsl(200 50% 90% / 0.1);
+    --shadow-glow: 0 0 40px hsl(280 100% 85% / 0.6);
+    --shadow-troll: 0 0 30px hsl(0 100% 50% / 0.8);
 
     --radius: 0.5rem;
 
@@ -55,42 +79,10 @@ All colors MUST be HSL.
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  .light {
+    /* Light mode disabled - Magic Mirror is always dark */
+    --background: 240 10% 8%;
+    --foreground: 240 10% 95%;
   }
 }
 
@@ -100,6 +92,189 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-serif overflow-hidden;
+    background: var(--gradient-magic);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Mirror Frame Effect */
+  .mirror-frame {
+    background: var(--gradient-mirror);
+    border: 4px solid hsl(var(--mirror-frame));
+    border-radius: 20px;
+    box-shadow: 
+      var(--shadow-mirror),
+      0 0 50px hsl(220 30% 25% / 0.8),
+      inset 0 0 20px hsl(200 50% 90% / 0.05);
+    position: relative;
+  }
+  
+  .mirror-frame::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 16px;
+    background: linear-gradient(45deg, 
+      transparent 30%, 
+      hsl(200 50% 90% / 0.1) 50%, 
+      transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Magical Text Effects */
+  .magical-text {
+    background: var(--gradient-sreemrudu);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px hsl(280 100% 70% / 0.8);
+    animation: magical-glow 2s ease-in-out infinite alternate;
+  }
+
+  .troll-text {
+    color: hsl(var(--troll-red));
+    text-shadow: 
+      0 0 10px hsl(var(--troll-red) / 0.8),
+      0 0 20px hsl(var(--troll-red) / 0.6),
+      2px 2px 4px rgba(0,0,0,0.8);
+    animation: troll-shake 0.3s ease-in-out infinite;
+  }
+
+  /* Rose Petals Animation */
+  .rose-petal {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: hsl(var(--rose-petal));
+    border-radius: 50% 0;
+    animation: float-down 4s linear infinite;
+    opacity: 0.7;
+  }
+
+  /* Mirror Crack Effect */
+  .mirror-crack {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(45deg, transparent 40%, hsl(0 100% 50% / 0.3) 50%, transparent 60%),
+      linear-gradient(-45deg, transparent 40%, hsl(0 100% 50% / 0.3) 50%, transparent 60%),
+      radial-gradient(circle at 30% 40%, transparent 30%, hsl(0 100% 50% / 0.2) 40%, transparent 50%);
+    animation: crack-spread 1s ease-out;
+  }
+
+  /* Mass Meter */
+  .mass-meter {
+    background: linear-gradient(90deg, 
+      hsl(var(--mass-meter-low)) 0%, 
+      hsl(var(--mass-meter-low)) var(--meter-percentage, 15%), 
+      hsl(var(--muted)) var(--meter-percentage, 15%));
+    border: 2px solid hsl(var(--troll-red));
+    border-radius: 10px;
+    height: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Video Mirror Effect */
+  .video-mirror {
+    transform: scaleX(-1);
+    filter: contrast(1.1) brightness(1.1);
+    border-radius: 16px;
+  }
+
+  /* Sparkle Animation */
+  .sparkle {
+    position: absolute;
+    background: hsl(var(--magic-sparkle));
+    border-radius: 50%;
+    animation: sparkle 1.5s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .text-magical {
+    @apply magical-text;
+  }
+  
+  .text-troll {
+    @apply troll-text;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes magical-glow {
+  0% { 
+    filter: brightness(1) drop-shadow(0 0 20px hsl(280 100% 70% / 0.8)); 
+  }
+  100% { 
+    filter: brightness(1.3) drop-shadow(0 0 40px hsl(280 100% 85% / 1)); 
+  }
+}
+
+@keyframes troll-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px) rotate(-1deg); }
+  75% { transform: translateX(2px) rotate(1deg); }
+}
+
+@keyframes float-down {
+  0% {
+    transform: translateY(-20px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes crack-spread {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes screen-static {
+  0% { 
+    filter: hue-rotate(0deg) contrast(1); 
+  }
+  25% { 
+    filter: hue-rotate(90deg) contrast(1.5); 
+  }
+  50% { 
+    filter: hue-rotate(180deg) contrast(0.8); 
+  }
+  75% { 
+    filter: hue-rotate(270deg) contrast(1.2); 
+  }
+  100% { 
+    filter: hue-rotate(360deg) contrast(1); 
   }
 }
